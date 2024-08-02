@@ -1,0 +1,17 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/external/hello"
+  },
+  "response": {
+    "status": 404,
+    "jsonBody": {
+      "title": "Hello André",
+      "description": "Description",
+      "time": "Time"
+    },
+    "header": {
+      "Content-Type": "application/json"
+    }
+  }
+}

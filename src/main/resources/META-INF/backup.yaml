@@ -1,0 +1,279 @@
+---
+openapi: 3.0.3
+info:
+  title: workstation-rack API
+  version: 1.0.0-SNAPSHOT
+paths:
+  /workstation/bookings:
+    get:
+      tags:
+      - Booking Resource
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/BookingDTO"
+    post:
+      tags:
+      - Booking Resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BookingDTO"
+      responses:
+        "200":
+          description: OK
+  /workstation/bookings/{id}:
+    get:
+      tags:
+      - Booking Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BookingDTO"
+    put:
+      tags:
+      - Booking Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BookingDTO"
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+      - Booking Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /workstation/goodbye:
+    get:
+      tags:
+      - Farewell Resource
+      responses:
+        "200":
+          description: OK
+          content:
+            text/html:
+              schema:
+                type: string
+  /workstation/hello:
+    get:
+      tags:
+      - Greeting Resource
+      responses:
+        "200":
+          description: OK
+          content:
+            text/html:
+              schema:
+                type: string
+  /workstation/racks:
+    get:
+      tags:
+      - Rack Resource
+      parameters:
+      - name: status
+        in: query
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/RackDTO"
+    post:
+      tags:
+      - Rack Resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RackDTO"
+      responses:
+        "200":
+          description: OK
+  /workstation/racks/{id}:
+    get:
+      tags:
+      - Rack Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RackDTO"
+    put:
+      tags:
+      - Rack Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RackDTO"
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+      - Rack Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /workstation/teams:
+    get:
+      tags:
+      - Team Resource
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TeamDTO"
+    post:
+      tags:
+      - Team Resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamDTO"
+      responses:
+        "200":
+          description: OK
+  /workstation/teams/{id}:
+    get:
+      tags:
+      - Team Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TeamDTO"
+    put:
+      tags:
+      - Team Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamDTO"
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+      - Team Resource
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+components:
+  schemas:
+    BookingDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        rackId:
+          type: string
+        requesterId:
+          type: string
+        bookFrom:
+          type: string
+        bookTo:
+          type: string
+    RackDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        serialNumber:
+          type: string
+        status:
+          type: string
+        teamId:
+          format: int32
+          type: integer
+    TeamDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        product:
+          type: string
