@@ -27,7 +27,9 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-    - name: Maven build & docker image
+    - name: Maven build
       uses: JKz02/academy/.github/actions/maven_build@main
     - name: Build docker image
       uses: JKz02/academy/.github/actions/docker_build@main
+      with:
+        tag_name: 'coolest_image'
