@@ -1,3 +1,4 @@
+/*
 package com.ctw.workstation;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
@@ -23,3 +24,4 @@ public class WiremockResource implements QuarkusTestResourceLifecycleManager {
         wireMockServer.stop();
     }
 }
+*/

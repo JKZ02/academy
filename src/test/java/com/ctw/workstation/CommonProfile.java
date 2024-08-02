@@ -1,3 +1,4 @@
+/*
 package com.ctw.workstation;
 
 import io.quarkus.test.junit.QuarkusTestProfile;
@@ -14,3 +15,4 @@ public class CommonProfile implements QuarkusTestProfile {
         );
     }
 }
+*/
