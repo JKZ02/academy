@@ -17,7 +17,6 @@ runs:
   using: composite
   steps:
     - name: Set tag name if empty
-      id: set_tag_name
       shell: bash
       run: |
         if [ -z "${{ inputs.tag_name }}" ]; then
