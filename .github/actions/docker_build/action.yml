@@ -8,18 +8,18 @@ inputs:
   image_name:
     description: "Image name"
     required: false
-    default: "./src/main/docker/Dockerfile.jvm"
+    default: "academy"
   tag_name:
-    description: "tag name"
+    description: "Tag name"
     required: false
-    default: "./src/main/docker/Dockerfile.jvm"
+    default: "$(date +%s)"
 runs:
   using: composite
   steps:
     - name: Create docker image
-      run: docker build . --file ./src/main/docker/Dockerfile.jvm --tag academy:$(date +%s)
       shell: bash
+      run:
+        docker build . --file ${{inputs.dockerfile_path}} --tag ${{inputs.image_name}}:${{inputs.tag_name}
     - name: List docker images
       run: docker image ls
       shell: bash
-
