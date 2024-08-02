@@ -11,11 +11,8 @@ inputs:
     default: "academy"
   tag_name:
     description: "Tag name"
-    required: false
+    required: true
     default: ""
-outputs:
-  tag_name:
-    description: "The tag name used for the Docker image"
 runs:
   using: composite
   steps:
@@ -28,13 +25,11 @@ runs:
         else
           tag_name=${{ inputs.tag_name }}
         fi
-        echo "::set-output name=tag_name::$tag_name"
-
+        echo "tag_name=$tag_name" >> $GITHUB_ENV
     - name: Create docker image
       shell: bash
-      run: |
-        docker build . --file ${{inputs.dockerfile_path}} --tag ${{inputs.image_name}}:${{ steps.set_tag_name.outputs.tag_name }}
-
+      run:
+        docker build . --file ${{inputs.dockerfile_path}} --tag ${{inputs.image_name}}:${{env.tag_name}}
     - name: List docker images
       run: docker image ls
       shell: bash

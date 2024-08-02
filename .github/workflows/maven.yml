@@ -38,5 +38,5 @@ jobs:
         uses: JKz02/academy/.github/actions/docker_image_push@main
         with:
           image_name: "academy"
-          tag_name: ${{ steps.docker_build.outputs.tag_name }}
+          tag_name: ${{env.tag_name}}
           dockerhub_repo: 'andrefilipealmeida478/github-actions'

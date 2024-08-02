@@ -16,12 +16,12 @@ runs:
     - name: Tag docker image for Docker Hub
       shell: bash
       run: |
-        docker tag ${{inputs.image_name}}:${{inputs.tag_name}} ${{inputs.dockerhub_repo}}:${{inputs.tag_name}}
+        docker tag ${{inputs.image_name}}:${{inputs.tag_name}} ${{inputs.dockerhub_repo}}
 
     - name: Push docker image to Docker Hub
       shell: bash
       run: |
-        docker push ${{inputs.dockerhub_repo}}:${{inputs.tag_name}}
+        docker push ${{inputs.dockerhub_repo}}
 
     - name: List docker images
       run: docker image ls
