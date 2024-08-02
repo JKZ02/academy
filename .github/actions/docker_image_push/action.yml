@@ -4,6 +4,9 @@ inputs:
   image_name:
     description: "Image name"
     required: true
+  tag_name:
+    description: "Tag name"
+    required: true
   dockerhub_repo:
     description: "Docker Hub repository"
     required: true
@@ -12,10 +15,14 @@ runs:
   steps:
     - name: Tag docker image for Docker Hub
       shell: bash
-      run: docker tag ${{inputs.image_name}}:${{inputs.image_name}} ${{inputs.dockerhub_repo}}:${{inputs.image_name}}
+      run: |
+        docker tag ${{inputs.image_name}}:${{inputs.tag_name}} ${{inputs.dockerhub_repo}}:${{inputs.tag_name}}
+
     - name: Push docker image to Docker Hub
       shell: bash
-      run: docker push ${{inputs.dockerhub_repo}}:${{inputs.image_name}}
+      run: |
+        docker push ${{inputs.dockerhub_repo}}:${{inputs.tag_name}}
+
     - name: List docker images
       run: docker image ls
       shell: bash
