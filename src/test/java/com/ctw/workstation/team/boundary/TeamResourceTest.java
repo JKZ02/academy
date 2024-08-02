@@ -121,7 +121,7 @@ class TeamResourceTest {
                 .delete("/"+id)
                 .then().extract().asString();
 
-        assertThat(result).isEqualTo(id);
+        assertThat(result).isEqualTo("Team 2");
 
 
 /*

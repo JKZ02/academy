@@ -60,7 +60,7 @@ public class TeamResource {
     @Path("/{name}")
     public Response deleteTeam(@PathParam("name") String name) {
         teamRepository.deleteTeam(name);
-        return Response.status(200).build();
+        return Response.status(200).entity(name).build();
     }
     @Transactional
     @POST
