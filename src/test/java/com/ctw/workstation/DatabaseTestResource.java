@@ -1,4 +1,3 @@
-/*
 package com.ctw.workstation;
 
 import io.quarkus.logging.Log;
@@ -14,14 +13,12 @@ public class DatabaseTestResource implements QuarkusTestResourceLifecycleManager
 
     @Override
     public Map<String, String> start() {
-        */
-/*postgres.withDatabaseName("fs_academy")
+        /*postgres.withDatabaseName("fs_academy")
                 .withPassword("postgres")
                 .withUsername("postgres")
                 .withExposedPorts(5432)
                 .start();
-        return Map.of();*//*
-
+        return Map.of();*/
 
         Log.infof("About to start", "DatabaseTestResource");
 
@@ -42,4 +39,3 @@ public class DatabaseTestResource implements QuarkusTestResourceLifecycleManager
         postgres.stop();
     }
 }
-*/

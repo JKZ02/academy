@@ -1,4 +1,3 @@
-/*
 package com.ctw.workstation.team.service;
 
 import com.ctw.workstation.Location;
@@ -80,4 +79,4 @@ class TeamRepositoryTest {
     @Test
     void addTeam() {
     }
-}*/
+}
