@@ -11,15 +11,25 @@ inputs:
     default: "academy"
   tag_name:
     description: "Tag name"
-    required: false
-    default: "$(date +%s)"
+    required: true
+    default: ""
 runs:
   using: composite
   steps:
+    - name: Set tag name if empty
+      id: set_tag_name
+      shell: bash
+      run: |
+        if [ -z "${{ inputs.tag_name }}" ]; then
+          tag_name=$(date +%s)
+        else
+          tag_name=${{ inputs.tag_name }}
+        fi
+        echo "tag_name=$tag_name" >> $GITHUB_ENV
     - name: Create docker image
       shell: bash
       run:
-        docker build . --file ${{inputs.dockerfile_path}} --tag ${{inputs.image_name}}:${{inputs.tag_name}}
+        docker build . --file ${{inputs.dockerfile_path}} --tag ${{inputs.image_name}}:${{env.tag_name}}
     - name: List docker images
       run: docker image ls
       shell: bash
