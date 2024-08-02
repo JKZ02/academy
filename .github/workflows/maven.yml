@@ -29,3 +29,5 @@ jobs:
         cache: maven
     - name: Maven build & docker image
       uses: JKz02/academy/.github/actions/maven_build@main
+    - name: Build docker image
+      uses: JKz02/academy/.github/actions/docker_build@main

@@ -1,0 +1,25 @@
+name: Build
+description: Build Docker image
+inputs:
+  dockerfile_path:
+    description: "Path to the Dockerfile"
+    required: false
+    default: "./src/main/docker/Dockerfile.jvm"
+  image_name:
+    description: "Image name"
+    required: false
+    default: "./src/main/docker/Dockerfile.jvm"
+  tag_name:
+    description: "tag name"
+    required: false
+    default: "./src/main/docker/Dockerfile.jvm"
+runs:
+  using: composite
+  steps:
+    - name: Create docker image
+      run: docker build . --file ./src/main/docker/Dockerfile.jvm --tag academy:$(date +%s)
+      shell: bash
+    - name: List docker images
+      run: docker image ls
+      shell: bash
+
