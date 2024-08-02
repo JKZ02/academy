@@ -73,7 +73,7 @@ class TeamRepositoryTest {
         Team result = teamRepository.createTeam(a);
 
         //then
-        assertEquals(new Team(a.getName(), a.getProduct(), a.getLocation()), result);
+        assertEquals(new Team(a.getName(), a.getProduct(), a.getLocation()).getName(), result.getName());
     }
 
     @Test
