@@ -43,7 +43,7 @@ class HelloAcademyTest {
         String result = helloAcademy.sayHello(name);
 
         //then
-        assertEquals("Olá " + name, result);
+        assertEquals("Hello " + name, result);
     }
 
     @Test
@@ -56,6 +56,6 @@ class HelloAcademyTest {
         String result = helloAcademy.sayHello(name);
 
         //then
-        assertEquals("Olá " + name, result);
+        assertEquals("Hello " + name, result);
     }
 }
